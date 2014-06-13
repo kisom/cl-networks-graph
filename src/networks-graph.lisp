@@ -28,7 +28,7 @@
 
 ;;; hacks and glory await
 
-(defstruct node (label nil :type symbol) (edges nil 0:type list))
+(defstruct node (label nil :type symbol) (edges nil :type list))
 
 (defun sort-edges (edges)
   (sort edges
@@ -80,12 +80,6 @@
   (and (path-p path)
        (eql (node-label (first path))
             (node-label (first (last path))))))
-
-(defun sort-edges (edges)
-  (sort edges
-        (lambda (x y)
-          (string-lessp (string x)
-                        (string y)))))
 
 (defun link-directed (from to)
   (if (neighbour-p from to)
